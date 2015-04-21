@@ -46,10 +46,10 @@ int keys3ds[32][3] = {
 	{ KEY_B, ' ', KEYD_ESCAPE }, //bit 01
 	{ KEY_SELECT, KEYD_ENTER, 0 }, //bit 02
 	{ KEY_START, KEYD_ESCAPE, 0 }, //bit 03
-	{ KEY_DRIGHT, KEYD_RIGHTARROW, 0 }, //bit 04
-	{ KEY_DLEFT, KEYD_LEFTARROW, 0 }, //bit 05
-	{ KEY_DUP, KEYD_UPARROW, 0 }, //bit 06
-	{ KEY_DDOWN, KEYD_DOWNARROW, 0 }, //bit 07
+	{ KEY_RIGHT, KEYD_RIGHTARROW, 0 }, //bit 04
+	{ KEY_LEFT, KEYD_LEFTARROW, 0 }, //bit 05
+	{ KEY_UP, KEYD_UPARROW, 0 }, //bit 06
+	{ KEY_DOWN, KEYD_DOWNARROW, 0 }, //bit 07
 	{ KEY_R, '.', 0 }, //bit 08
 	{ KEY_L, ',', 0 }, //bit 09
 	{ KEY_X, KEYD_RSHIFT, 0 }, //bit 10
