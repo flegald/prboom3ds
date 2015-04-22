@@ -336,10 +336,8 @@ void G_BuildTiccmd(ticcmd_t* cmd)
         side += sidemove[speed];
       if (gamekeydown[key_left])
         side -= sidemove[speed];
-      if (joyxmove > 0)
-        side += sidemove[speed];
-      if (joyxmove < 0)
-        side -= sidemove[speed];
+      if (joyxmove != 0)
+		side += sidemove[speed] * joyxmove;
     }
   else
     {
@@ -347,20 +345,16 @@ void G_BuildTiccmd(ticcmd_t* cmd)
         cmd->angleturn -= angleturn[tspeed];
       if (gamekeydown[key_left])
         cmd->angleturn += angleturn[tspeed];
-      if (joyxmove > 0)
-        cmd->angleturn -= angleturn[tspeed];
-      if (joyxmove < 0)
-        cmd->angleturn += angleturn[tspeed];
+      if (joyxmove != 0)
+		cmd->angleturn += angleturn[tspeed] * joyxmove;
     }
 
   if (gamekeydown[key_up])
     forward += forwardmove[speed];
   if (gamekeydown[key_down])
     forward -= forwardmove[speed];
-  if (joyymove < 0)
-    forward += forwardmove[speed];
-  if (joyymove > 0)
-    forward -= forwardmove[speed];
+  if (joyymove != 0)
+    forward += forwardmove[speed]*joyymove;
   if (gamekeydown[key_straferight])
     side += sidemove[speed];
   if (gamekeydown[key_strafeleft])

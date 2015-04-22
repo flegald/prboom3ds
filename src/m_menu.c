@@ -3877,10 +3877,10 @@ int M_GetKeyString(int c,int offset)
 	  case KEYD_CSTICK_LEFT:	s = "CSL"; break;
 	  case KEYD_CSTICK_UP:		s = "CSU"; break;
 	  case KEYD_CSTICK_DOWN:	s = "CSD"; break;
-	  case KEYD_CPAD_RIGHT:		s = "CPR"; break;
+	  /*case KEYD_CPAD_RIGHT:		s = "CPR"; break;
 	  case KEYD_CPAD_LEFT:		s = "CPL"; break;
 	  case KEYD_CPAD_UP:		s = "CPU"; break;
-	  case KEYD_CPAD_DOWN:		s = "CPD"; break;
+	  case KEYD_CPAD_DOWN:		s = "CPD"; break;*/
 	  case KEYD_ZL:				s = "ZL"; break;
 	  case KEYD_ZR:				s = "ZR"; break;
 	  default:              s = "JUNK"; break;

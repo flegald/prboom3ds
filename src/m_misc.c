@@ -406,13 +406,13 @@ default_t defaults[] =
 // CPhipps - now they're the doom codes, so default.cfg can be portable
 
   {"Key bindings",{NULL},{0},UL,UL,def_none,ss_none},
-  {"key_right",       {&key_right},          {KEYD_RIGHTARROW},
+  {"key_right",       {&key_right},          {0},
    0,MAX_KEY,def_key,ss_keys}, // key to turn right
-  {"key_left",        {&key_left},           {KEYD_LEFTARROW} ,
+  {"key_left",        {&key_left},           {0} ,
    0,MAX_KEY,def_key,ss_keys}, // key to turn left
-  {"key_up",          {&key_up},             {KEYD_UPARROW}   ,
+  {"key_up",          {&key_up},             {0}   ,
    0,MAX_KEY,def_key,ss_keys}, // key to move forward
-  {"key_down",        {&key_down},           {KEYD_DOWNARROW},
+  {"key_down",        {&key_down},           {0},
    0,MAX_KEY,def_key,ss_keys}, // key to move backward
   {"key_menu_right",  {&key_menu_right},     {KEYD_RIGHTARROW},// phares 3/7/98
    0,MAX_KEY,def_key,ss_keys}, // key to move right in a menu  //     |
@@ -452,13 +452,13 @@ default_t defaults[] =
    0,MAX_KEY,def_key,ss_keys}, // key to bring up sound controls
   {"key_hud",         {&key_hud},            {KEYD_F5}        ,
    0,MAX_KEY,def_key,ss_keys}, // key to adjust HUD
-  {"key_quicksave",   {&key_quicksave},      {KEYD_F6}        ,
+  {"key_quicksave",   {&key_quicksave},      {KEYD_LEFTARROW}        ,
    0,MAX_KEY,def_key,ss_keys}, // key to to quicksave
   {"key_endgame",     {&key_endgame},        {KEYD_F7}        ,
    0,MAX_KEY,def_key,ss_keys}, // key to end the game
   {"key_messages",    {&key_messages},       {KEYD_F8}        ,
    0,MAX_KEY,def_key,ss_keys}, // key to toggle message enable
-  {"key_quickload",   {&key_quickload},      {KEYD_F9}        ,
+  {"key_quickload",   {&key_quickload},      {KEYD_RIGHTARROW}        ,
    0,MAX_KEY,def_key,ss_keys}, // key to load from quicksave
   {"key_quit",        {&key_quit},           {KEYD_F10}       ,
    0,MAX_KEY,def_key,ss_keys}, // key to quit game
@@ -476,7 +476,7 @@ default_t defaults[] =
    0,MAX_KEY,def_key,ss_keys}, // backspace key
   {"key_enter",       {&key_enter},          {KEYD_ENTER}     ,
    0,MAX_KEY,def_key,ss_keys}, // key to select from menu or see last message
-  {"key_map",         {&key_map},            {KEYD_TAB}       ,
+  {"key_map",         {&key_map},            {KEYD_DOWNARROW}       ,
    0,MAX_KEY,def_key,ss_keys}, // key to toggle automap display
   {"key_map_right",   {&key_map_right},      {KEYD_RIGHTARROW},// phares 3/7/98
    0,MAX_KEY,def_key,ss_keys}, // key to shift automap right   //     |
@@ -519,7 +519,7 @@ default_t defaults[] =
    0,MAX_KEY,def_key,ss_keys}, // key to chat with player 3
   {"key_chatplayer4", {&destination_keys[3]}, {'r'}            ,
    0,MAX_KEY,def_key,ss_keys}, // key to chat with player 4
-  {"key_weapontoggle",{&key_weapontoggle},    {'0'}            ,
+  {"key_weapontoggle",{&key_weapontoggle},    {KEYD_UPARROW}            ,
    0,MAX_KEY,def_key,ss_keys}, // key to toggle between two most preferred weapons with ammo
   {"key_weapon1",     {&key_weapon1},         {'1'}            ,
    0,MAX_KEY,def_key,ss_keys}, // key to switch to weapon 1 (fist/chainsaw)

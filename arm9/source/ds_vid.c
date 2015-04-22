@@ -44,12 +44,12 @@ touchPosition	g_currentTouch = { 0, 0 };
 int keys3ds[32][3] = {
 	{ KEY_A, KEYD_RCTRL, KEYD_ENTER }, //bit 00
 	{ KEY_B, ' ', KEYD_ESCAPE }, //bit 01
-	{ KEY_SELECT, KEYD_ENTER, 0 }, //bit 02
-	{ KEY_START, KEYD_ESCAPE, 0 }, //bit 03
-	{ KEY_RIGHT, KEYD_RIGHTARROW, 0 }, //bit 04
-	{ KEY_LEFT, KEYD_LEFTARROW, 0 }, //bit 05
-	{ KEY_UP, KEYD_UPARROW, 0 }, //bit 06
-	{ KEY_DOWN, KEYD_DOWNARROW, 0 }, //bit 07
+	{ KEY_SELECT, KEYD_ESCAPE, 0 }, //bit 02
+	{ KEY_START, KEYD_PAUSE, 0 }, //bit 03
+	{ KEY_DRIGHT, KEYD_RIGHTARROW, 0 }, //bit 04
+	{ KEY_DLEFT, KEYD_LEFTARROW, 0 }, //bit 05
+	{ KEY_DUP, KEYD_UPARROW, 0 }, //bit 06
+	{ KEY_DDOWN, KEYD_DOWNARROW, 0 }, //bit 07
 	{ KEY_R, '.', 0 }, //bit 08
 	{ KEY_L, ',', 0 }, //bit 09
 	{ KEY_X, KEYD_RSHIFT, 0 }, //bit 10
@@ -70,20 +70,23 @@ int keys3ds[32][3] = {
 	{ KEY_CSTICK_LEFT, KEYD_CSTICK_LEFT, 0 }, //bit 25
 	{ KEY_CSTICK_UP, KEYD_CSTICK_UP, 0 }, //bit 26
 	{ KEY_CSTICK_DOWN, KEYD_CSTICK_DOWN, 0 }, //bit 27
-	{ KEY_CPAD_RIGHT, KEYD_CPAD_RIGHT, 0 }, //bit 28
-	{ KEY_CPAD_LEFT, KEYD_CPAD_LEFT, 0 }, //bit 29
-	{ KEY_CPAD_UP, KEYD_CPAD_UP, 0 }, //bit 30
-	{ KEY_CPAD_DOWN, KEYD_CPAD_DOWN, 0 }, //bit 31
+	{ KEY_CPAD_RIGHT, KEYD_CPAD_RIGHT, KEYD_RIGHTARROW }, //bit 28
+	{ KEY_CPAD_LEFT, KEYD_CPAD_LEFT, KEYD_LEFTARROW }, //bit 29
+	{ KEY_CPAD_UP, KEYD_CPAD_UP, KEYD_UPARROW }, //bit 30
+	{ KEY_CPAD_DOWN, KEYD_CPAD_DOWN, KEYD_DOWNARROW }, //bit 31
 };
 
 void DS_Controls(void) {
 	touchPosition touch;
+	circlePosition circle;
 
 	scanKeys();	// Do DS input housekeeping
 	u32 keys = keysDown();
 	u32 held = keysHeld();
 	u32 up = keysUp();
 	int i;
+
+	circleRead(&circle);
 
 	if (held & KEY_TOUCH) {
 		touchRead(&touch);
@@ -344,6 +347,17 @@ void DS_Controls(void) {
 	}
 
 #endif
+
+	if (abs(circle.dx) > 0.2 || abs(circle.dy) > 0.2)
+	{
+		event_t joyEvent;
+		joyEvent.type = ev_joystick;
+		joyEvent.data1 = 0; //no buttons
+		joyEvent.data2 = abs(circle.dx) > 0.2 ? circle.dx : 0; //joyx
+		joyEvent.data3 = abs(circle.dy) > 0.2 ? circle.dy : 0; //joyy
+		D_PostEvent(&joyEvent);
+	}
+
 	if (keysDown() & KEY_TOUCH)
 	{
 		touchRead(&g_lastTouch);
