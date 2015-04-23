@@ -348,16 +348,13 @@ void DS_Controls(void) {
 
 #endif
 
-	if (abs(circle.dx) > 0.2 || abs(circle.dy) > 0.2)
-	{
-		event_t joyEvent;
-		joyEvent.type = ev_joystick;
-		joyEvent.data1 = 0; //no buttons
-		joyEvent.data2 = abs(circle.dx) > 0.2 ? circle.dx : 0; //joyx
-		joyEvent.data3 = abs(circle.dy) > 0.2 ? circle.dy : 0; //joyy
-		D_PostEvent(&joyEvent);
-	}
-
+	event_t joyEvent;
+	joyEvent.type = ev_joystick;
+	joyEvent.data1 = 0; //no buttons
+	joyEvent.data2 = abs(circle.dx) > 40 ? circle.dx*-1 : 0; //joyx
+	joyEvent.data3 = abs(circle.dy) > 40 ? circle.dy : 0; //joyy
+	D_PostEvent(&joyEvent);
+	
 	if (keysDown() & KEY_TOUCH)
 	{
 		touchRead(&g_lastTouch);
